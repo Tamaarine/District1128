@@ -29,7 +29,7 @@ public class Line implements Disposable {
     public void drawLine(SpriteBatch batch,float x)
     {
         batch.draw(background,x+40,0,Gdx.graphics.getWidth()/4,Gdx.graphics.getHeight()/4);
-        font.setColor(Color.BLACK);
+        font.setColor(new Color(255f/255f, 255f/255f, 255f/255f, 255f/255f));
         //font.draw(batch,name,20,115);
         //font.draw(batch,line,20,95);
         font.draw(batch,name,x+55,115);

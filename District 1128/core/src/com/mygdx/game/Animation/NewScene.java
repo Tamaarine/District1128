@@ -13,7 +13,7 @@ public abstract class NewScene
 
     public NewScene()
     {
-        isComplete=false;
+        isComplete=true;
         batch=new SpriteBatch();
         camera=new OrthographicCamera();
         camera.setToOrtho(false,Gdx.graphics.getWidth()/4,Gdx.graphics.getHeight()/4);

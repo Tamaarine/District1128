@@ -42,6 +42,8 @@ public class GameScreen implements Screen {
 
     //Dialogue
     Conversation converse;
+    Conversation converse2;
+    Conversation converse3;
     Line testing;
 
     //Buttons
@@ -70,9 +72,26 @@ public class GameScreen implements Screen {
         blocks.add(new Block(256,0));
 
         converse=new Conversation(meko);
-        converse.addLine("Hello there","Meko");
-        converse.addLine("I didn't see you there","Meko");
-        converse.addLine("How are you today?","Meko");
+        converse.addLine("Hurry up!","Vicky");
+        converse.addLine("IHey I'm coming!","Meko");
+        converse.addLine("I need to find a book in the library,","Meko");
+        converse.addLine("Would you mind waiting me for a second?","Meko");
+        converse.addLine("Of course not!","Vicky");
+        converse.addLine("You've got a mission,"," ");
+        converse.addLine("Find The Cr*cible from the library."," ");
+
+
+        converse2=new Conversation(meko);
+        converse2.addLine("Hi! Could you please find me \"Silent Spring \" please?","Meko");
+        converse2.addLine("Sure!","Librarian");
+        converse2.addLine("......"," ");
+        converse2.addLine("Here you go!","Librarian");
+        converse2.addLine("Thank you! Have a good day!","Meko");
+        converse2.addLine("You too!","Librarian");
+
+        converse3=new Conversation(meko);
+        converse3.addLine("[SCEAMING]"," ");
+
 
         doorOpen=new Texture(Gdx.files.internal("DoorOpen.png"));
         doorClosed=new Texture(Gdx.files.internal("DoorClosed.png"));
