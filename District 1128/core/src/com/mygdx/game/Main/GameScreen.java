@@ -78,7 +78,7 @@ public class GameScreen implements Screen {
         converse.addLine("Would you mind waiting me for a second?","Meko");
         converse.addLine("Of course not!","Vicky");
         converse.addLine("You've got a mission,"," ");
-        converse.addLine("Find The Cr*cible from the library."," ");
+        converse.addLine("Find \"Silent Spring \" from the library."," ");
 
 
         converse2=new Conversation(meko);
