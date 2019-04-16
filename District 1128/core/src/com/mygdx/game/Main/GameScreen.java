@@ -14,7 +14,7 @@ import com.mygdx.game.Actor.Meko;
 import com.mygdx.game.Animation.EntryScene;
 
 import java.util.ArrayList;
-//hello this is walid lol
+
 public class GameScreen implements Screen {
 
     //Setting up all the variables
@@ -55,7 +55,6 @@ public class GameScreen implements Screen {
 
     public GameScreen(MyGdxGame pGame)
     {
-
         ms=0;
         pGame=game;
         gameBatch=new SpriteBatch();
@@ -125,7 +124,6 @@ public class GameScreen implements Screen {
 
         if(!scene1.isComplete())
         {
-
             scene1.act();
         }
         else
@@ -147,7 +145,7 @@ public class GameScreen implements Screen {
                     if(leftArrow.getHitBox().contains(touchX,touchY))
                     {
                         meko.moveLeft(delta);
-                    System.out.println("This is true");
+                        System.out.println("This is true");
                     }
                     else if(rightArrow.getHitBox().contains(touchX,touchY))
                     {
