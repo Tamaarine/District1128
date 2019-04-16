@@ -86,7 +86,7 @@ public class EntryPoint implements Screen
     }
 
     @Override
-    public void resume() {
+        public void resume() {
 
     }
 
