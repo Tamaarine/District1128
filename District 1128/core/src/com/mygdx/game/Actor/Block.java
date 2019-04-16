@@ -1,4 +1,4 @@
-package com.mygdx.game.Outdated;
+package com.mygdx.game.Actor;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
