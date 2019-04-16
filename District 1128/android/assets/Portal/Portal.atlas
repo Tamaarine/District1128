@@ -1,0 +1,27 @@
+
+Portal.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+P
+  rotate: false
+  xy: 2, 2
+  size: 40, 111
+  orig: 40, 111
+  offset: 0, 0
+  index: 1
+P
+  rotate: false
+  xy: 48, 2
+  size: 44, 111
+  orig: 44, 111
+  offset: 0, 0
+  index: 2
+P
+  rotate: false
+  xy: 94, 2
+  size: 43, 110
+  orig: 43, 110
+  offset: 0, 0
+  index: 3

@@ -7,11 +7,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Vicky {
     public Rectangle full;
-    public Sprite sprite;
+    public Rectangle position;
     public Texture texture;
     public final float velocity=100f;
     public Animation<TextureRegion> leftWalk;
@@ -20,21 +21,29 @@ public class Vicky {
     public Animation<TextureRegion> rightRun;
     public int actionCode;
 
+    private Texture vickyLeft;
+    private Texture vickyRight;
+
     public Vicky(float x,float y)
     {
-        full=new Rectangle(x,y,41,112);
+        full=new Rectangle(x-41/2,y,41,112);
+        position=new Rectangle(x,y,0,0);
         texture=new Texture(Gdx.files.internal("Vicky/Vicky.png"));
-        sprite=new Sprite(texture,0,0,128,128);
-        actionCode=0;
+
+        actionCode=5;
 
         //Making animations here
         TextureAtlas leftWalkAtlas=new TextureAtlas(Gdx.files.internal("Vicky/VickyLeft.atlas"));
-        leftWalk=new Animation<TextureRegion>(1/6f,leftWalkAtlas.findRegions("V"), Animation.PlayMode.LOOP);
+        leftWalk=new Animation<TextureRegion>(1/7f,leftWalkAtlas.findRegions("V"), Animation.PlayMode.LOOP);
 
         TextureAtlas rightWalkAtlas=new TextureAtlas(Gdx.files.internal("Vicky/VickyRight.atlas"));
-        rightWalk=new Animation<TextureRegion>(1/6f,rightWalkAtlas.findRegions("V"), Animation.PlayMode.LOOP);
+        rightWalk=new Animation<TextureRegion>(1/7f,rightWalkAtlas.findRegions("V"), Animation.PlayMode.LOOP);
 
-        setPosition(x,y);
+        vickyLeft=new Texture(Gdx.files.internal("Vicky/VickyFacingLeft.png"));
+        vickyRight=new Texture(Gdx.files.internal("Vicky/VickyFacingRight.png"));
+
+        updateFull();
+
     }
 
     public int hit(Rectangle anotherR)
@@ -47,18 +56,17 @@ public class Vicky {
         return -1;
     }
 
-    public void draw(SpriteBatch batch)
+    public void drawStill(SpriteBatch batch)
     {
-        batch.draw(sprite.getTexture(),full.x,full.y);
+        batch.draw(texture,full.x,full.y);
 
         setActionCode(0);
     }
 
     public void setPosition(float x,float y)
     {
-        full.x=x;
-        full.y=y;
-        sprite.setPosition(x,y);
+        position.x=x;
+        position.y=y;
     }
 
     public Rectangle getHitBox()
@@ -68,18 +76,17 @@ public class Vicky {
 
     public void moveLeft(float delta)
     {
-        full.x-=velocity*delta;
+        position.x-=velocity*delta;
 
-        setPosition(full.x,full.y);
-
+        updateFull();
         setActionCode(-1);
     }
 
     public void moveRight(float delta)
     {
-        full.x+=velocity*delta;
+        position.x+=velocity*delta;
 
-        setPosition(full.x,full.y);
+        updateFull();
 
         setActionCode(1);
     }
@@ -102,5 +109,36 @@ public class Vicky {
     public void setActionCode(int code)
     {
         actionCode=code;
+    }
+
+    public float getX()
+    {
+        return position.x;
+    }
+
+    public float getY()
+    {
+        return position.y;
+    }
+
+    public Rectangle getPosition()
+    {
+        return position;
+    }
+
+    public void updateFull()
+    {
+        full.x=position.x-41;
+        full.y=position.y-8;
+    }
+
+    public float map(float value,float low,float high,float toLow,float toHigh)
+    {
+        return toLow+(value-low)*(toHigh-toLow)/(high-low);
+    }
+
+    public void drawLeft(SpriteBatch batch)
+    {
+        batch.draw(vickyLeft,full.x,full.y);
     }
 }

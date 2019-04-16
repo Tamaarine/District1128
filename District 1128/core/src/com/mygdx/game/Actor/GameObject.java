@@ -9,14 +9,12 @@ public abstract class GameObject {
 
     //Variables that all the other classes tending from GameObject will have
     public Rectangle full;
-    public Sprite sprite;
     public Texture texture;
 
     public GameObject(int x,int y,int width,int height)
     {
         full=new Rectangle(0,0,width,height);
         texture=new Texture(Gdx.files.internal("default.jpg"));
-        sprite=new Sprite(texture,x,y,width,height);
 
         setPosition(x,y);
     }
@@ -61,21 +59,17 @@ public abstract class GameObject {
         texture=givenTexture;
     }
 
+    public Texture getTexture()
+    {
+        return texture;
+    }
+
     public void setPosition(float givenX,float givenY)
     {
         full.x=givenX;
         full.y=givenY;
     }
 
-    public Sprite getSprite()
-    {
-        return sprite;
-    }
-
-    public void setSpriteTexture(Texture givenTexture)
-    {
-        sprite.setTexture(givenTexture);
-    }
 
 
 

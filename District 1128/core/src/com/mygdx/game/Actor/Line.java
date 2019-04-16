@@ -14,6 +14,8 @@ public class Line implements Disposable {
     private String line;
     private String name;
     private Texture background;
+    private Texture mekoBox;
+    private Texture vickyBox;
 
     //Final variables
     private final int MAX_LENGTH=44;
@@ -22,18 +24,34 @@ public class Line implements Disposable {
     {
         font=new BitmapFont();
         background=new Texture(Gdx.files.internal("Textbox.png"));
+        mekoBox=new Texture(Gdx.files.internal("MekoBox.png"));
+        vickyBox=new Texture(Gdx.files.internal("VickyBox.png"));
         line=givenString;
         name=givenName;
     }
 
     public void drawLine(SpriteBatch batch,float x)
     {
-        batch.draw(background,x+40,0,Gdx.graphics.getWidth()/4,Gdx.graphics.getHeight()/4);
-        font.setColor(new Color(255f/255f, 255f/255f, 255f/255f, 255f/255f));
+        if(name.equals("Vicky"))
+        {
+            batch.draw(vickyBox,x,0,Gdx.graphics.getWidth()/4,Gdx.graphics.getHeight()/4);
+        }
+        else if(name.equals("Meko"))
+        {
+            batch.draw(mekoBox,x,0,Gdx.graphics.getWidth()/4,Gdx.graphics.getHeight()/4);
+        }
+        else if(name.equals("None"))
+        {
+            batch.draw(background,x,0,Gdx.graphics.getWidth()/4,Gdx.graphics.getHeight()/4);
+        }
+        font.setColor(Color.WHITE);
         //font.draw(batch,name,20,115);
         //font.draw(batch,line,20,95);
-        font.draw(batch,name,x+55,115);
-        font.draw(batch,line,x+55,95);
+        if(!name.equals("None"))
+        {
+            font.draw(batch,name,x+15,115);
+        }
+        font.draw(batch,line,x+15,95);
 
     }
 

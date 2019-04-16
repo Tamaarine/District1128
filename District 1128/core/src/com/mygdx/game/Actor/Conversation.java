@@ -34,14 +34,13 @@ public class Conversation implements Disposable {
 
     public void startConversation(SpriteBatch batch)
     {
-        float x=meko.getHitBox().x;
-
+        //float x=meko.getPosition().x;
 
         ms=ms+Gdx.graphics.getDeltaTime();
 
         if(lineCounter<lines.size())
         {
-            lines.get(lineCounter).drawLine(batch,x-Gdx.graphics.getWidth()/8);
+            lines.get(lineCounter).drawLine(batch,meko.getX());
         }
 
         checkToGoNextLine();
