@@ -20,6 +20,8 @@ public class StatScreen implements Screen
     private Texture user;
     private Texture scan;
 
+    private Texture bg=new Texture(Gdx.files.internal("ActualScore.png"));
+
     //Numbers for the pictures
     private int bottleNum=25665;
     private int userNum=5789;
@@ -33,7 +35,8 @@ public class StatScreen implements Screen
         batch=new SpriteBatch();
         camera=new OrthographicCamera();
 
-        camera.setToOrtho(false, Gdx.graphics.getWidth()/4,Gdx.graphics.getHeight()/4);
+        camera.setToOrtho(false);
+
 
 
     }
@@ -56,9 +59,8 @@ public class StatScreen implements Screen
 
         batch.begin();
 
-        font.draw(batch,"DashBoard",Gdx.graphics.getWidth()/8,200);
 
-
+        batch.draw(bg,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
 
 

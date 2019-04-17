@@ -66,7 +66,7 @@ public class Main_Menu implements Screen
     public int bcY = mapY(300);
 
     public int startX = mapX(screenWidth/2 - 80);
-    public int startY = mapY(screenHeight/2 -125);
+    public int startY = mapY(screenHeight/2);
 
     public int lvl1X = mapX(100);
     public int lvl1Y = mapY(50);
@@ -77,19 +77,19 @@ public class Main_Menu implements Screen
 
     //RELATIVE LOCATIONS---------------------------------------------------------------------------------
     public int initX = mapX(spaceBet+ spaceBet);
-    public int initY = mapY(150);
+    public int initY = mapY(350);
     public float initSizeW = mapX(75);
     public float initSizeH = mapY(80);
 
     public float initScanW = mapY(150);
     public float initScanH = mapY(170);
     public int scanX = mapX(screenWidth/2-75 + 10);
-    public int scanY = mapY(140);
+    public int scanY = mapY(340);
 
     public float initEarthW = 75;
     public float initEarthH = 80;
     public int earthX = mapX(screenWidth/2 + 4*earthFinalW);
-    public int earthY = mapY(150);
+    public int earthY = mapY(350);
 
     //public int scanX = mapX(spaceBet*2 + initSizeW);
     //----------------------------------------------------------------------------------------------------
@@ -112,6 +112,8 @@ public class Main_Menu implements Screen
 
     public int goLeftW = 130;
     public int goLeftH = 190;
+
+
     public Main_Menu(MyGdxGame game)
     {
         MenuScreen = game;
@@ -162,10 +164,7 @@ public class Main_Menu implements Screen
         if (Gdx.input.isTouched())
         {
 
-            if (isHovering(TitleLoc))
-            {
-                MenuScreen.setScreen(new GameScreen(MenuScreen));
-            }
+
             if(isHovering(goRight))
             {
                 scrollRight = true;
@@ -192,21 +191,9 @@ public class Main_Menu implements Screen
             {
                 //put code for earth Icon here
             }
-            else{}
-            if(isHovering(scanLoc))
-            {
-                //CorwnCount changes here
 
-            }
-            else
-            {
 
-            }
-            if(overShop())
-            {
-                MenuScreen.setScreen(new ShopClass(MenuScreen));
-                //game.setScreen(new GameScreen(game));
-            }
+
         }
         else
         {
@@ -292,6 +279,19 @@ public class Main_Menu implements Screen
             }
 
         }
+        if(Gdx.input.isTouched())
+        {
+            /**
+            if(isHovering(selectBox))
+            {
+                MenuScreen.setScreen(new StatScreen());
+            }
+             **/
+            if (isHovering(TitleLoc))
+            {
+                MenuScreen.setScreen(new GameScreen(MenuScreen));
+            }
+        }
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
@@ -303,19 +303,13 @@ public class Main_Menu implements Screen
         ShopLoc.translate(initX,initY);
         scanLoc.translate(scanX,scanY);
         earthLoc.translate(earthX,earthY);
-        if(Gdx.input.isTouched()) {
-            if(isHovering(ShopLoc) || overShop())
-            {
-                MenuScreen.setScreen(new ShopClass(MenuScreen));
-            }
-        }
 /**
             batch.draw(ShopLoc, initX, initY, initSizeW, initSizeH);
             batch.draw(scanLoc,scanX,scanY,initScanW,initScanH);
             batch.draw(earthLoc,earthX,earthY,initEarthW,initEarthH);
  **/
         //}
-       batch.draw(startGame,startX,startY, mapX(200), mapY(250));
+
 
        if(initX  >= goRight.getX())
        {
@@ -361,18 +355,14 @@ public class Main_Menu implements Screen
            initEarthH = earthFinalH;
        }
 
-        batch.draw(selectBox,mapX(screenWidth/2-boxW/2 + 14),screenHeight/2-boxH + mapY(10),boxW,boxH);
+
         batch.draw(goRight,mapX(screenWidth - compen + 75), mapY(selectBox.getY() - 75), mapX(goRightW), mapY(goRightH - 25));
         batch.draw(goLeft,mapX(compen - 200), mapY(selectBox.getY() - 75), mapX(goLeftW), mapY(goLeftH - 25));
         batch.draw(scanLoc,scanX,scanY,initScanW,initScanH);
         batch.draw(earthLoc,earthX,earthY,initEarthW,initEarthH);
         batch.draw(ShopLoc, initX, initY, initSizeW, initSizeH);
-        if(Gdx.input.isTouched()) {
-            if(isHovering(selectBox))
-            {
-                MenuScreen.setScreen(new Statscreen(MenuScreen));
-            }
-        }
+        batch.draw(selectBox,mapX(screenWidth/2-boxW/2 + 14),screenHeight/2-boxH + mapY(10),boxW,boxH);
+        batch.draw(startGame,startX,startY, mapX(200), mapY(250));
         batch.end();
     }
 
