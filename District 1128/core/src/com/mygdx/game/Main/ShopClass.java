@@ -21,6 +21,7 @@ public class ShopClass implements Screen
     Texture imgBack;
     Texture shopKeeper;
     Texture textTab;
+    Texture Back;
     Texture weaponA;
     Texture weaponB;
 
@@ -28,12 +29,13 @@ public class ShopClass implements Screen
     {
         game = myGame;
         batch = new SpriteBatch();
-        imgBack = new Texture("store");
+        imgBack = new Texture("store.png");
         shopKeeper = new Texture("merchant.png");
         textTab = new Texture("Textbox.png");
-        
 
-
+         storeIcon = new Sprite(imgBack);
+         merchantIcon = new Sprite(shopKeeper);
+         storeIcon.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
     @Override
     public void show()
@@ -44,7 +46,10 @@ public class ShopClass implements Screen
     @Override
     public void render(float delta)
     {
-
+        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin();
+        batch.draw()
     }
 
     @Override

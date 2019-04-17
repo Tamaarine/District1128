@@ -169,6 +169,9 @@ public class Main_Menu implements Screen
             if(isHovering(goRight))
             {
                 scrollRight = true;
+                ShopLoc.translate(initX,initY);
+                scanLoc.translate(scanX,scanY);
+                earthLoc.translate(earthX,earthY);
             }
             else
             {
@@ -177,6 +180,9 @@ public class Main_Menu implements Screen
             if(isHovering(goLeft))
             {
                 scrollLeft = true;
+                ShopLoc.translate(initX,initY);
+                scanLoc.translate(scanX,scanY);
+                earthLoc.translate(earthX,earthY);
             }
             else
             {
@@ -196,7 +202,7 @@ public class Main_Menu implements Screen
             {
 
             }
-            if(isHovering(ShopLoc))
+            if(overShop())
             {
                 MenuScreen.setScreen(new ShopClass(MenuScreen));
                 //game.setScreen(new GameScreen(game));
@@ -251,6 +257,9 @@ public class Main_Menu implements Screen
                 initX -= deltaNew;
                 scanX -= deltaNew;
                 earthX -= deltaNew;
+                ShopLoc.translate(initX,initY);
+                scanLoc.translate(scanX,scanY);
+                earthLoc.translate(earthX,earthY);
                 if(earthX + earthLoc.getWidth()/2 <= screenWidth/2)
                 {
                     initEarthH -= deltaSize;
@@ -294,10 +303,17 @@ public class Main_Menu implements Screen
         ShopLoc.translate(initX,initY);
         scanLoc.translate(scanX,scanY);
         earthLoc.translate(earthX,earthY);
-
+        if(Gdx.input.isTouched()) {
+            if(isHovering(ShopLoc) || overShop())
+            {
+                MenuScreen.setScreen(new ShopClass(MenuScreen));
+            }
+        }
+/**
             batch.draw(ShopLoc, initX, initY, initSizeW, initSizeH);
             batch.draw(scanLoc,scanX,scanY,initScanW,initScanH);
             batch.draw(earthLoc,earthX,earthY,initEarthW,initEarthH);
+ **/
         //}
        batch.draw(startGame,startX,startY, mapX(200), mapY(250));
 
@@ -348,6 +364,15 @@ public class Main_Menu implements Screen
         batch.draw(selectBox,mapX(screenWidth/2-boxW/2 + 14),screenHeight/2-boxH + mapY(10),boxW,boxH);
         batch.draw(goRight,mapX(screenWidth - compen + 75), mapY(selectBox.getY() - 75), mapX(goRightW), mapY(goRightH - 25));
         batch.draw(goLeft,mapX(compen - 200), mapY(selectBox.getY() - 75), mapX(goLeftW), mapY(goLeftH - 25));
+        batch.draw(scanLoc,scanX,scanY,initScanW,initScanH);
+        batch.draw(earthLoc,earthX,earthY,initEarthW,initEarthH);
+        batch.draw(ShopLoc, initX, initY, initSizeW, initSizeH);
+        if(Gdx.input.isTouched()) {
+            if(isHovering(selectBox))
+            {
+                MenuScreen.setScreen(new Statscreen(MenuScreen));
+            }
+        }
         batch.end();
     }
 
@@ -417,5 +442,24 @@ public class Main_Menu implements Screen
         double ratio = dist/center;
         return 1- Math.abs(ratio) + .5;
     }
+    public boolean overShop()
+    {
+        if(Gdx.input.isTouched())
+        {
+            int x = Gdx.input.getX();
+            int y = Gdx.input.getY();
+            if((Gdx.input.getX() > initX && Gdx.input.getX() < initX + initSizeW))
+        {
+            if (Gdx.input.getY() > initY && Gdx.input.getY() < initY + initSizeH)
+            {
+
+                return true;
+            }
+
+        }
+        }
+        return false;
+
+}
 
 }
