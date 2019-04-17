@@ -58,7 +58,7 @@ public class StatScreen implements Screen
 
         font.draw(batch,"DashBoard",Gdx.graphics.getWidth()/8,200);
 
-        
+
 
 
 

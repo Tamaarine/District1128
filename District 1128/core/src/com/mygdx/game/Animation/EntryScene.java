@@ -128,6 +128,8 @@ public class EntryScene extends NewScene
             {
                 setComplete(true);
             }
+
+            setComplete(true);
         }
 
 

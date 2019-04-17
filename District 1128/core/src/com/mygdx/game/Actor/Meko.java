@@ -110,7 +110,7 @@ public class Meko
             //System.out.println(touchX+" "+touchY);
             //System.out.println(leftArrow.getHitBox().x+" "+leftArrow.getHitBox().y);
 
-            float mappedX = map(touchX, 0, 1766, getX() - 222, getX() + 222);
+            float mappedX = map(touchX, 0, 1980, getX() - 222, getX() + 222);
             float mappedY = map(touchY, 0, 1080, 0, 270);
 
 

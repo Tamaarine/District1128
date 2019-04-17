@@ -61,9 +61,9 @@ public class FightScreen implements Screen {
         camera.setToOrtho(false,Gdx.graphics.getWidth()/4,Gdx.graphics.getHeight()/4);
 
         //Making the enemies
-        tins.add(new TinMonster(64,50));
-        tins.add(new TinMonster(128,50));
-        tins.add(new TinMonster(256,50));
+        tins.add(new TinMonster(1000,50));
+        tins.add(new TinMonster(1200,50));
+        tins.add(new TinMonster(1400,50));
 
         //This will be responisble for handling the conversations
         converseQuer=new ArrayList<Conversation>();
